@@ -7,7 +7,7 @@ module.exports = {
 		const balance = (await db.get(member.user.id)) || 0;
 
 		const embed = new MessageEmbed()
-			.setColor([255, 0, 0])
+		.setColor("#" + Math.random().toString(16).slice(2, 8))
 			.setAuthor(`Баланс ${member.user.tag} - ${balance}`, member.user.avatarURL())
 			.setTimestamp();
 
