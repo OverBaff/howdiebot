@@ -8,10 +8,10 @@ module.exports = {
 
 		const embed = new MessageEmbed()
 		.setColor("#" + Math.random().toString(16).slice(2, 8))
-			.setAuthor(`Баланс ${member.user.tag} - ${balance}`, member.user.avatarURL())
+			.setAuthor(`Баланс ${member.user.tag} : ${balance}`, member.user.avatarURL())
 			.setTimestamp();
 
-		await message.channel.send(embed);
+		 message.channel.send(embed);
 	},
 	name: 'баланс',
 };
