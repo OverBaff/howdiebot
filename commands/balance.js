@@ -14,4 +14,6 @@ module.exports = {
 		message.channel.send(embed);
 	},
 	name: 'баланс',
+	desc: "Узнай своё состояние!",
+	usage: "+баланс"
 };

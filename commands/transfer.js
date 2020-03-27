@@ -33,4 +33,6 @@ module.exports = {
 		message.channel.send(`${message.author} Перевёл на баланс ${member} : ${money}`);
 	},
 	name: 'перевести',
+	desc: "Передать деньги другому участнику",
+	usage: "+перевести <сумма> <участник>"
 };
