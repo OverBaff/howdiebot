@@ -23,7 +23,8 @@ npm install
 ```  
 
 Настройте `.env`: скопируйте его шаблон из `.env.example`
-Значения полей: ```
+Значения полей: 
+```
 TOKEN=токен бота c discordapp.com/developers
 PREFIX=префикс бота
 MONEY_BD=uri базы данных для keyv
