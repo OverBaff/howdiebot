@@ -1,8 +1,7 @@
-const Keyv = require('keyv');
+const getBalance = require("../util/getBalance.js");
+const setBalance = require("../util/setBalance.js");
 module.exports = {
 	execute: async message => {
-		const db = new Keyv(process.env.MONEY_DB);
-		// db.set("427518363955363841", 100);
 		const member = message.mentions.members.first();
 		if(!member) {
 			message.channel.send('Вы не указали пользователя!');
@@ -12,8 +11,8 @@ module.exports = {
 			message.channel.send('Нельзя перевести валюту самому себе!');
 			return;
 		}
-		const balanceAuthor = (await db.get(message.author.id)) || 0;
-		const balanceMember = (await db.get(member.user.id)) || 0;
+		const balanceAuthor = getBalance(message.author.id);
+		const balanceMember = getBalance(member.user.id);
 		const money = parseInt(message.content.split(' ').slice(1));
 		if(!money) {
 			message.channel.send('Вы не указали сумму!');
@@ -28,8 +27,8 @@ module.exports = {
 			message.channel.send('У вас не достаточно средств!');
 			return;
 		}
-		db.set(message.author.id, balanceAuthor - money);
-		db.set(member.id, balanceMember + money);
+		setBalance(message.author.id, balanceAuthor - money);
+		setBalance(member.id, balanceMember + money);
 		message.channel.send(`${message.author} Перевёл на баланс ${member} : ${money}`);
 	},
 	name: 'перевести',
