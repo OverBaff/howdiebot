@@ -9,6 +9,8 @@ console.log = msg => oldLog(`[HowdieBot] ${msg}`);
 const client = new Client();
 client.commands = new Collection();
 
+module.exports = client;
+
 const dir = fs.readdirSync(path.join(process.cwd(), 'commands'));
 for(let i = 0; i < dir.length; i++) {
 	if(dir[i].endsWith('.js')) {
@@ -47,5 +49,3 @@ client.on('ready', async () => {
 });
 
 client.login(process.env.TOKEN);
-
-module.exports = client;
