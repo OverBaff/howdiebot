@@ -31,3 +31,5 @@ client.on('message', msg => {
 });
 
 client.login(process.env.TOKEN);
+
+module.exports = client;
