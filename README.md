@@ -27,7 +27,7 @@ npm install
 ```
 TOKEN=токен бота c discordapp.com/developers
 PREFIX=префикс бота
-MONEY_BD=uri базы данных для keyv
+MONEY_DB=uri базы данных для keyv
 ```
 
 ## Технологии
