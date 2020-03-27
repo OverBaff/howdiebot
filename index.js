@@ -3,7 +3,7 @@ const fs = require('fs');
 const { Client, Collection } = require('discord.js');
 const path = require('path');
 
-let oldLog = console.log;
+const oldLog = console.log;
 console.log = msg => oldLog(`[HowdieBot] ${msg}`);
 
 const client = new Client();
@@ -33,7 +33,7 @@ client.on('message', msg => {
 	toExec.execute(msg);
 });
 
-client.on("ready", async () => {
+client.on('ready', async () => {
 	console.log(`Подключились как ${client.user.tag}(${client.user.id})`);
 });
 

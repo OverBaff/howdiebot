@@ -7,11 +7,11 @@ module.exports = {
 		const balance = (await db.get(member.user.id)) || 0;
 
 		const embed = new MessageEmbed()
-		.setColor("#" + Math.random().toString(16).slice(2, 8))
+			.setColor('#' + Math.random().toString(16).slice(2, 8))
 			.setAuthor(`Баланс ${member.user.tag} : ${balance}`, member.user.avatarURL())
 			.setTimestamp();
 
-		 message.channel.send(embed);
+		message.channel.send(embed);
 	},
 	name: 'баланс',
 };
