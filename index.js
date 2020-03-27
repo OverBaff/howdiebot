@@ -5,7 +5,6 @@ const path = require('path');
 
 const client = new Client();
 client.commands = new Collection();
-client.ignoreChannels = ["692996454486114304"];
 
 const dir = fs.readdirSync(path.join(process.cwd(), 'commands'));
 for(let i = 0; i < dir.length; i++) {
