@@ -36,7 +36,7 @@ if(balance < money) {
 let casinoResult = casino();
 let mno = parseInt(money * casinoResult.key);
 db.set(message.author.id, balance -= money);
-message.channel.send(new MessageEmbed().setDescription(`Ставка: **${money}**\nМножитель/выигрыш : **${casinoResult.key}**/**${mno}**\n\n${(casinoResult.text).join("\n")}`));
+message.channel.send(new MessageEmbed().setColor('#' + Math.random().toString(16).slice(2, 8)).setDescription(`Ставка: **${money}**\nМножитель: **${casinoResult.key}**\nВыигрыш : **${mno}**\n\n${(casinoResult.text).join("\n")}`));
 db.set(message.author.id, parseInt(balance + mno) );
 },
 	name: 'ставка',
