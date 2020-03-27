@@ -14,15 +14,20 @@
 ## Установка
 Для работы необходим node.js >= 12 и пакетный менеджер npm. Затем, склонируйте этот репозиторий к себе:
 ```
-git clone https://github.com/kislball/howdiebot/```
+git clone https://github.com/kislball/howdiebot/
+```
+
 Установите все зависимости:
 ```
-npm install```
+npm install
+```  
+
 Настройте `.env`: скопируйте его шаблон из `.env.example`
 Значения полей: ```
 TOKEN=токен бота c discordapp.com/developers
 PREFIX=префикс бота
-MONEY_BD=uri базы данных для keyv```
+MONEY_BD=uri базы данных для keyv
+```
 
 ## Технологии
 * [node.js](https://nodejs.org/)
