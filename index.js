@@ -33,6 +33,10 @@ client.on('message', msg => {
 	toExec.execute(msg);
 });
 
+client.on("ready", async () => {
+	console.log(`Подключились как ${client.user.tag}(${client.user.id})`);
+});
+
 client.login(process.env.TOKEN);
 
 module.exports = client;
