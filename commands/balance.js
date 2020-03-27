@@ -8,7 +8,7 @@ module.exports = {
 
 		const embed = new MessageEmbed()
 			.setColor([255, 0, 0])
-			.setAuthor(`Баланс ${member.user.tag} - ${balance}`, member.user.avatarURL())
+			.setAuthor(`Баланс ${member.user.tag} - ${balance}§`, member.user.avatarURL())
 			.setTimestamp();
 
 		await message.channel.send(embed);
