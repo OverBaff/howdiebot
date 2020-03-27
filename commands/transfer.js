@@ -24,7 +24,7 @@ module.exports = {
 		}
 
 		if(balanceAuthor < money) {
-			message.channel.send('У вас не достаточно средств!');
+			message.channel.send('У вас недостаточно средств!');
 			return;
 		}
 		setBalance(message.author.id, balanceAuthor - money);
