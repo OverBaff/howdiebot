@@ -3,5 +3,5 @@ module.exports = {
 		message.channel.send('kek');
 	},
 	name: 'пинг',
-	ignore: true
+	ignore: true,
 };

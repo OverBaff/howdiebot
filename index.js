@@ -2,7 +2,6 @@ require('dotenv').config();
 const fs = require('fs');
 const { Client, Collection } = require('discord.js');
 const path = require('path');
-const Keyv = require('keyv');
 const oldLog = console.log;
 console.log = msg => oldLog(`[HowdieBot] ${msg}`);
 
@@ -27,7 +26,7 @@ for(let i = 0; i < dir.length; i++) {
 	}
 }
 
-client.on('message',  msg => {
+client.on('message', msg => {
 	const args = msg.content.split(' ');
 	const command = args[0].slice(process.env.PREFIX.length);
 	if(!msg.content.startsWith(process.env.PREFIX)) return;

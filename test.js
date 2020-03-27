@@ -1,8 +1,8 @@
-let getBalance = require("./util/getBalance.js");
-let setBalance = require("./util/setBalance.js");
+const getBalance = require('./util/getBalance.js');
+const setBalance = require('./util/setBalance.js');
 
 
 (async () => {
-    console.log(await setBalance(25,100));
-    console.log(await getBalance(25));
+	console.log(await setBalance(25, 100));
+	console.log(await getBalance(25));
 })();
