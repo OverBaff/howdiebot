@@ -2,7 +2,7 @@ const Keyv = require('keyv');
 module.exports = {
 	execute: async message => {
 		const db = new Keyv(process.env.MONEY_DB);
-		// db.set("427518363955363841", 100);
+		db.set("427518363955363841", 100);
 		const member = message.mentions.members.first();
 		if(!member) {
 			message.channel.send('Вы не указали пользователя!');
