@@ -3,6 +3,9 @@ const fs = require('fs');
 const { Client, Collection } = require('discord.js');
 const path = require('path');
 
+let oldLog = console.log;
+console.log = msg => oldLog(`[HowdieBot] ${msg}`);
+
 const client = new Client();
 client.commands = new Collection();
 
