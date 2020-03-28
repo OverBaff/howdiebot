@@ -30,7 +30,7 @@ module.exports = {
         }
 
         embed.addField("Заслуги", text, true)
-            .addField("Вступил на сервер",  `${moment(member.joinedAt).toString().substr(0, 15)}\n(${moment(member.joinedAt).fromNow()})`, true);
+            .addField("Вступил на сервер",  `${moment(member.joinedAt).fromNow()}`, true);
 
         //net worth
 
