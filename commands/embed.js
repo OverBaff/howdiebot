@@ -14,5 +14,8 @@ module.exports = {
     message.delete();
     message.channel.send(embed(botmessage));
 	},
-	name: 'рамка',
+    name: 'рамка',
+    desc: 'Отправка сообщений от имени бота в рамке.',
+    usage: '+рамка',
+    ignore: true,
 };

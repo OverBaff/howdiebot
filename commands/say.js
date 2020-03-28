@@ -7,5 +7,8 @@ module.exports = {
     message.delete();
     message.channel.send(botmessage);
 	},
-	name: 'отправить',
+    name: 'отправить',
+    desc: 'Отправка сообщений от имени бота.',
+    usage: '+отправить',
+    ignore: true,
 };
