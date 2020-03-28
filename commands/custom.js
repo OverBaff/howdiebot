@@ -1,6 +1,7 @@
 const Keyv = require("keyv");
 const profilecmd = require("./profile.js");
 const numComma = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const { MessageEmbed } = require("discord.js");
 module.exports = {
     execute: async message => {
         const profilesDB = new Keyv(process.env.PROFILES_DB);
@@ -50,7 +51,7 @@ module.exports = {
             if(!user.embedsNum) user.embedsNum = 0;
             if(args[2] == "купить"){
                 if(balance < 500) return message.channel.send(`:x: У вас недостаточно средств! Вам нужно еще ${500 - balance}§, чтобы купить этот апгрейд!`);
-                if(user.embedsNum >= 5) return message.channel.send(":x: Вы не можете иметь больше 5 полей!");
+                if(user.embedsNum >= 6) return message.channel.send(":x: Вы не можете иметь больше 6 полей!");
                 moneyDB.set(message.author.id, balance - 500).then(() => {
                     user.embedsNum++;
                     profilesDB.set(message.author.id, user);
@@ -59,7 +60,8 @@ module.exports = {
             }
             else if(args[2] == "добавить"){
                 if(!user.activeEmbeds) user.activeEmbeds = [];
-                if(user.activeEmbeds.length >= 5) return message.channel.send(":x: Вы уже добавили 5 полей!");
+                if(user.activeEmbeds.length >= 6) return message.channel.send(":x: Вы уже добавили 6 полей!");
+                if(user.activeEmbeds.length >= user.embedsNum) return message.channel.send(":x: У вас недостаточно полей! Купите их через команду: `+кастом поля купить`");
                 let allContent = args.slice(3).join(" ");
                 let splited = allContent.split("|");
                 if(!splited[0] || !splited[1]) return message.channel.send(":x: Укажите оглавление и содержание поля разделяя их |");
@@ -67,6 +69,27 @@ module.exports = {
                     title: splited[0],
                     content: splited[1]
                 });
+                profilesDB.set(message.author.id, user).then(() => {
+                    profilesDB.set(message.author.id, user).then(() => profilecmd.execute(message));
+                });
+            }
+            else if(args[2] == "список"){
+                if(!user.activeEmbeds) user.activeEmbeds = [];
+                let embed = new MessageEmbed()
+                    .setColor(user.lineColor || "")
+                    .setTitle(`Поля участника ${message.author.tag}`)
+                    .setTimestamp()
+                    .setDescription(`Доступно ${user.embedsNum - user.activeEmbeds.length}/${user.embedsNum}`);
+                for(let i = 0; i < user.activeEmbeds.length; i++){
+                    embed.addField(`${i+1}. ` + user.activeEmbeds[i].title, user.activeEmbeds[i].content);
+                }
+                message.channel.send(embed);
+            }
+            else if(args[2] == "удалить"){
+                if(!user.activeEmbeds) user.activeEmbeds = [];
+                if(!parseInt(args[3])) return message.channel.send(":x: Укажите номер поля!");
+                if(!user.activeEmbeds[parseInt(args[3]) - 1]) return message.channel.send(":x: Такого поля не существует!");
+                user.activeEmbeds.splice(parseInt(args[3]) - 1, 1);
                 profilesDB.set(message.author.id, user).then(() => {
                     profilesDB.set(message.author.id, user).then(() => profilecmd.execute(message));
                 });

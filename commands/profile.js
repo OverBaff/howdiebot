@@ -45,7 +45,7 @@ module.exports = {
         
         //custom fields
         for(let i = 0; i < userFromDB.activeEmbeds.length; i++){
-            embed.addField(userFromDB.activeEmbeds[i].title, userFromDB.activeEmbeds[i].content);
+            embed.addField(userFromDB.activeEmbeds[i].title, userFromDB.activeEmbeds[i].content, true);
         }
         
 
