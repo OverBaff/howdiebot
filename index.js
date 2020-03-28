@@ -37,6 +37,7 @@ client.on('message', msg => {
 
 client.on('ready', async () => {
 	console.log(`Подключились как ${client.user.tag}(${client.user.id})`);
+	client.user.setPresence({activity:{name: `за сервером | Участников: ${client.users.cache.size}`,  type: "WATCHING"}});
 });
 
 client.login(process.env.TOKEN);
