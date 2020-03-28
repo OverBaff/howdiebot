@@ -5,9 +5,10 @@ module.exports = {
 		const db = new Keyv(process.env.MONEY_DB);
 		const member = message.mentions.members.first() || message.member;
 		const balance = (await db.get(member.user.id)) || 0;
+		const profilesDB = new Keyv(process.env.PROFILES_DB);
 
 		const embed = new MessageEmbed()
-			.setColor('#' + Math.random().toString(16).slice(2, 8))
+			.setColor(await profilesDB.get(message.author.id).lineColor || "RANDOM")
 			.setAuthor(`Баланс ${member.user.tag} : ${balance}`, member.user.avatarURL())
 			.setTimestamp();
 

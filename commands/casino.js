@@ -5,6 +5,7 @@ module.exports = {
 		const db = new Keyv(process.env.MONEY_DB);
 		let tempKey;
 		let balance = (await db.get(message.author.id)) || 0;
+		const profilesDB = new Keyv(process.env.PROFILES_DB);
 		const casino = () => {
 			function set(text) {
 				return [number[0] + number[1] + number[2], text.symbol, number[6] + number[5] + number[4]];
@@ -34,7 +35,7 @@ module.exports = {
 		const casinoResult = casino();
 		const mno = parseInt(money * casinoResult.key);
 		db.set(message.author.id, balance -= money);
-		message.channel.send(new MessageEmbed().setColor('#' + Math.random().toString(16).slice(2, 8)).setDescription(`Ставка: **${money}**\nМножитель: **${casinoResult.key}**\nВыигрыш : **${mno}**\n\n${(casinoResult.text).join('\n')}`));
+		message.channel.send(new MessageEmbed().setColor(await profilesDB.get(message.author.id).lineColor || "RANDOM").setDescription(`Ставка: **${money}**\nМножитель: **${casinoResult.key}**\nВыигрыш : **${mno}**\n\n${(casinoResult.text).join('\n')}`));
 		db.set(message.author.id, parseInt(balance + mno));
 	},
 	name: 'ставка',
