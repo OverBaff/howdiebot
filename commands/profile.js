@@ -12,6 +12,7 @@ module.exports = {
 
         let userFromDB = await profilesDB.get(member.user.id) || {};
         if(!userFromDB.header) userFromDB.header = {};
+        if(!userFromDB.activeEmbeds) userFromDB.activeEmbeds = {};
         const embed = new MessageEmbed()
             .setTitle(`Карточка участника ${member.user.tag}`)
             .setThumbnail(member.user.avatarURL())
@@ -42,6 +43,12 @@ module.exports = {
         const rep = await reputationDB.get(member.user.id) || 0;
         embed.setFooter(`Репутация: ${rep}`, rep > 0 && rep != 0 ? "https://cdn1.iconfinder.com/data/icons/color-bold-style/21/04-512.png" : "https://pngimg.com/uploads/minus/minus_PNG39.png");
         
+        //custom fields
+        for(let i = 0; i < userFromDB.activeEmbeds.length; i++){
+            embed.addField(userFromDB.activeEmbeds[i].title, userFromDB.activeEmbeds[i].content);
+        }
+        
+
         message.channel.send(embed);
     },
     name: "профиль",
