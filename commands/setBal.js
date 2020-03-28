@@ -11,7 +11,7 @@ module.exports = {
         let args = message.content.split(" ").slice(2);
         if(!parseInt(args)) return message.channel.send(":x: Укажите число!");
         const db = new Keyv(process.env.MONEY_DB);
-        db.set(member.user.id, parseInt(args[2])).then(() => {
+        db.set(member.user.id, parseInt(args)).then(() => {
             message.channel.send(":white_check_mark: Успех!");
         });
     },
