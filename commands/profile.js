@@ -1,10 +1,11 @@
 const { MessageEmbed } = require("discord.js");
 const Keyv = require("keyv");
+const moment = require('moment');
 
+moment.lang('ru');
 module.exports = {
     execute: async message => {
         const member = message.mentions.members.first() || message.member;
-
         const reputationDB = new Keyv(process.env.REPUTATION_DB);
         const moneyDB = new Keyv(process.env.MONEY_DB);
         const profilesDB = new Keyv(process.env.PROFILES_DB);
@@ -27,8 +28,9 @@ module.exports = {
             if(text == "<нет>") text = "";
             text += badges[i] + "\n";
         }
+
         embed.addField("Заслуги", text, true)
-            .addField("Вступил на сервер", member.joinedAt, true);
+            .addField("Вступил на сервер",  `${moment(member.joinedAt).toString().substr(0, 15)}\n(${moment(member.joinedAt).fromNow()})`, true);
 
         //net worth
 
