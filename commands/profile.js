@@ -9,12 +9,13 @@ module.exports = {
         const moneyDB = new Keyv(process.env.MONEY_DB);
         const profilesDB = new Keyv(process.env.PROFILES_DB);
 
-        const userFromDB = await profilesDB.get(member.user.id) || {};
+        let userFromDB = await profilesDB.get(member.user.id) || {};
+        if(!userFromDB.header) userFromDB.header = {};
         const embed = new MessageEmbed()
             .setTitle(`Карточка участника ${member.user.tag}`)
             .setThumbnail(member.user.avatarURL())
             .setColor(userFromDB.lineColor)
-            .setAuthor(userFromDB.header.text, userFromDB.header.image)
+            .setAuthor(userFromDB.header.text || "", userFromDB.header.image || "")
             .setImage(userFromDB.customImage)
             .setDescription(userFromDB.bio || "Участник не указал информацию о себе");
 
