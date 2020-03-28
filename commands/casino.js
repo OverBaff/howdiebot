@@ -35,7 +35,7 @@ module.exports = {
 		const casinoResult = casino();
 		const mno = parseInt(money * casinoResult.key);
 		db.set(message.author.id, balance -= money);
-		message.channel.send(new MessageEmbed().setColor(await profilesDB.get(message.author.id).lineColor || "").setDescription(`Ставка: **${money}**\nМножитель: **${casinoResult.key}**\nВыигрыш : **${mno}**\n\n${(casinoResult.text).join('\n')}`));
+		message.channel.send(new MessageEmbed().setColor(await profilesDB.get(message.author.id).lineColor || "RANDOM").setDescription(`Ставка: **${money}§**\nМножитель: **${casinoResult.key}**\nВыигрыш : **${mno}§**\n\n${(casinoResult.text).join('\n')}`));
 		db.set(message.author.id, parseInt(balance + mno));
 	},
 	name: 'ставка',
