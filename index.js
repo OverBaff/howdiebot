@@ -1,6 +1,6 @@
 require('dotenv').config();
 const fs = require('fs');
-const { Client, Collection } = require('discord.js');
+const { Client, Collection, MessageEmbed } = require('discord.js');
 const path = require('path');
 const oldLog = console.log;
 console.log = msg => oldLog(`[HowdieBot] ${msg}`);
@@ -33,7 +33,6 @@ client.on('message', msg => {
 	const toExec = client.commands.get(command);
 	if(!toExec) return;
 	toExec.execute(msg);
-
 });
 
 client.on('ready', async () => {
