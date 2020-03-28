@@ -13,6 +13,9 @@ module.exports = {
         const embed = new MessageEmbed()
             .setTitle(`Карточка участника ${member.user.tag}`)
             .setThumbnail(member.user.avatarURL())
+            .setColor(userFromDB.lineColor)
+            .setAuthor(userFromDB.header.text, userFromDB.header.image)
+            .setImage(userFromDB.customImage)
             .setDescription(userFromDB.bio || "Участник не указал информацию о себе");
 
         //showing badges
@@ -35,7 +38,7 @@ module.exports = {
 
         const rep = await reputationDB.get(member.user.id) || 0;
         embed.setFooter(`Репутация: ${rep}`, rep > 0 ? "https://cdn1.iconfinder.com/data/icons/color-bold-style/21/04-512.png" : "https://pngimg.com/uploads/minus/minus_PNG39.png");
-
+        
         message.channel.send(embed);
     },
     name: "профиль",
