@@ -25,10 +25,12 @@ npm install
 Настройте `.env`: скопируйте его шаблон из `.env.example`
 Значения полей: 
 ```
-TOKEN=токен бота c discordapp.com/developers
-PREFIX=префикс бота
-MONEY_DB=uri базы данных для валюты
-REPUTATION_DB=uri базы данных для репутации
+TOKEN=токен бота
+PREFIX=префикс
+MONEY_DB=uri базы данных для бабок
+REPUTATION_DB=uri базы данных для репы
+HELPER=id роли хелпера
+DATE_DB=база кэша для репы
 ```
 
 ## Технологии
