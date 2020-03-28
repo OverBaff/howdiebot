@@ -32,17 +32,7 @@ client.on('message', msg => {
 	if(!msg.content.startsWith(process.env.PREFIX)) return;
 	const toExec = client.commands.get(command);
 	if(!toExec) return;
-	try{
-		toExec.execute(msg);
-	}catch(e){
-		let embed = new MessageEmbed()
-			.setColor([255,0,0])
-			.setTitle("Во время запуска команды произошла ошибка!")
-			.setDescription(`\`\`\`js\n${e}\n\`\`\``)
-			.setTimestamp()
-			.setDescription(`Команда: ${command} | ID сообщения: ${message.id} | ID автора: ${message.author.id}`);
-		message.channel.send(embed);
-	}
+	toExec.execute(msg);
 });
 
 client.on('ready', async () => {
