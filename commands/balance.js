@@ -8,7 +8,7 @@ module.exports = {
 		const profilesDB = new Keyv(process.env.PROFILES_DB);
 
 		const embed = new MessageEmbed()
-			.setColor(await profilesDB.get(message.author.id).lineColor || "RANDOM")
+			.setColor(await profilesDB.get(message.author.id).lineColor || "")
 			.setAuthor(`Баланс ${member.user.tag} : ${balance}`, member.user.avatarURL())
 			.setTimestamp();
 
