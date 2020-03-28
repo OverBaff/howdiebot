@@ -26,9 +26,9 @@ module.exports = {
 			return { text: text, key: tempKey.key };
 		};
 		const money = parseInt(message.content.split(' ').slice(1));
-		if(!money || money < 1) return message.channel.send('Вы не указали сумму!');
+		if(!money || money < 1) return message.channel.send(':x: Вы не указали сумму!');
 		if(balance < money) {
-			message.channel.send('У вас недостаточно средств!');
+			message.channel.send(':x: У вас недостаточно средств!');
 			return;
 		}
 		const casinoResult = casino();
@@ -38,6 +38,6 @@ module.exports = {
 		db.set(message.author.id, parseInt(balance + mno));
 	},
 	name: 'ставка',
-	desc: 'Хей, АК, ты как поднял бабла!',
+	desc: 'Хей, АК, ты как поднял бабла?',
 	usage: '+ставка <сумма>',
 };

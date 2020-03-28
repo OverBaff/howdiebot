@@ -2,7 +2,7 @@ const Keyv = require("keyv");
 
 module.exports = {
     execute: async message => {
-        if(!message.member.roles.cache.has(process.env.HELPER)) return message.channel.send(":x: Нет прав!");
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":x: Нет прав!");
         const profilesDB = new Keyv(process.env.PROFILES_DB);
         const args = message.content.split(" ");
         const member = message.mentions.members.first();
@@ -17,5 +17,7 @@ module.exports = {
         });
     },
     name: "заслуга",
-    ignore: true
+    ignore: true,
+    desc: "Выдача заслуг участникам",
+    usage: "+заслуга <участник> <за что>"
 };
