@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const Keyv = require("keyv");
 const moment = require('moment');
 
-moment.lang('ru');
+moment.locale('ru')
 module.exports = {
     execute: async message => {
         const member = message.mentions.members.first() || message.member;
