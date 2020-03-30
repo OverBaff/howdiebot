@@ -38,10 +38,11 @@ module.exports = {
         const netWorth = await moneyDB.get(member.user.id) || 0;
         embed.addField("Баланс", netWorth + "§", true);
 
+
         //rep
 
         const rep = await reputationDB.get(member.user.id) || 0;
-        embed.setFooter(`Репутация: ${rep}`, rep > 0 && rep != 0 ? "https://cdn1.iconfinder.com/data/icons/color-bold-style/21/04-512.png" : "https://pngimg.com/uploads/minus/minus_PNG39.png");
+        embed.setFooter(`Репутация: ${rep} | ID:${member.id}`, rep > 0 && rep != 0 ? "https://cdn1.iconfinder.com/data/icons/color-bold-style/21/04-512.png" : "https://pngimg.com/uploads/minus/minus_PNG39.png");
         
         //custom fields
         for(let i = 0; i < userFromDB.activeEmbeds.length; i++){
@@ -53,5 +54,5 @@ module.exports = {
     },
     name: "профиль",
     desc: "Пасспорт участника сервера Хауди Хо",
-    usage: "+профиль [участник]"
+    usage: "/профиль [участник]"
 };

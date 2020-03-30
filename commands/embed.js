@@ -16,6 +16,6 @@ module.exports = {
 	},
     name: 'рамка',
     desc: 'Отправка сообщений от имени бота в рамке.',
-    usage: '+рамка',
+    usage: '/рамка',
     ignore: true,
 };

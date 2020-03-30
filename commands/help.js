@@ -12,5 +12,5 @@ module.exports = {
 	},
 	name: 'хелп',
 	desc: 'Базовая справка',
-	usage: '+хелп',
+	usage: '/хелп',
 };

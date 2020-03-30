@@ -6,15 +6,16 @@ module.exports = {
 		const member = message.mentions.members.first() || message.member;
 		const balance = (await db.get(member.user.id)) || 0;
 		const profilesDB = new Keyv(process.env.PROFILES_DB);
-
+		let userFromDB = await profilesDB.get(member.user.id) || "RANDOM";
 		const embed = new MessageEmbed()
-			.setColor(await profilesDB.get(message.author.id).lineColor || "")
-			.setAuthor(`Баланс ${member.user.tag} : ${balance}`, member.user.avatarURL())
+			//.setColor(await profilesDB.get(message.author.id).lineColor || "RANDOM")
+			.setColor(userFromDB.lineColor)
+			.setAuthor(`Баланс ${member.user.tag} : ${balance}§`, member.user.avatarURL())
 			.setTimestamp();
 
 		message.channel.send(embed);
 	},
 	name: 'баланс',
 	desc: 'Узнай своё состояние!',
-	usage: '+баланс',
+	usage: '/баланс',
 };
